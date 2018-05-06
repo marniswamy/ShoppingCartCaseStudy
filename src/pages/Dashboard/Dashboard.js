@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import HeaderComponent from '../../components/Header'
 import ProductList from '../../components/ProductList';
-import {selectAvailableProducts} from '../../selectors/selectors';
+import {selectAvailableProducts, selectCategories} from '../../selectors/selectors';
 
 class Dashboard extends Component {
     render() {
@@ -10,7 +10,8 @@ class Dashboard extends Component {
             <div>
                 <HeaderComponent/>
                 <ProductList
-                   products={this.props.availableProducts}
+                    categories={this.props.categories}
+                    products={this.props.availableProducts}
                 />
             </div>
         )
@@ -18,7 +19,10 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {availableProducts: selectAvailableProducts(state)}
+    return {
+        availableProducts: selectAvailableProducts(state),
+        categories: selectCategories(state)
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {

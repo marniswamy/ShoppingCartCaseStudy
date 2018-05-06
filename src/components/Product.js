@@ -8,7 +8,8 @@ import CurrencyFormatter from './CurrencyFormatter';
 
 const styles = {
     card: {
-        minWidth: 200,
+        width: 240,
+        height: 200,
         margin: 8
     },
     title: {
@@ -18,22 +19,22 @@ const styles = {
 };
 
 const ProductComponent = (props) => {
-    const {classes} = props;
+    const {classes, product} = props;
     return (
         <div>
             <Card className={classes.card}>
                 <CardContent>
                     <Typography className={classes.title} color="textSecondary">
-                        Leather Driver Saddle Loafers, Tan
+                        {product.name}
                     </Typography>
                     <Typography component="p">
-                        Available stock : 12
+                        Available stock : {product.stock}
                     </Typography>
                 </CardContent>
                 <CardActions>
                     <Typography component="p">
                         Price :
-                        <CurrencyFormatter amount={34}/>
+                        <CurrencyFormatter amount={product.price}/>
                     </Typography>
                     <Button size="small">Add to Cart</Button>
                 </CardActions>
