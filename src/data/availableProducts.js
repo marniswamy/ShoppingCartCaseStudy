@@ -1,5 +1,5 @@
 export const productList = {
-    menProducts: {
+    Men: {
         footware: [
             {
                 name: "Leather Driver Saddle Loafers, Tan",
@@ -39,7 +39,7 @@ export const productList = {
         ]
     },
 
-    womenProducts: {
+    Women: {
         footware: [
             {
                 name: "Almond Toe Court Shoes, Patent Black",
