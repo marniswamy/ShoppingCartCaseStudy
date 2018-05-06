@@ -5,10 +5,9 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import MoreVert from '@material-ui/icons/MoreVert';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Menu, {MenuItem} from 'material-ui/Menu';
-import {Link} from 'react-router';
 
 const styles = {
     root: {
@@ -41,6 +40,12 @@ class HeaderComponent extends React.Component {
         this.setState({anchorEl: null});
     };
 
+    goToCart = () => {
+        console.log("go to cart");
+        window.location.href="./checkout";
+    };
+
+
     render() {
         const {classes} = this.props;
         const {anchorEl} = this.state;
@@ -54,12 +59,11 @@ class HeaderComponent extends React.Component {
                             Shopping Cart
                         </Typography>
                         <div>
-                            <Link to="/checkout">Goto Cart</Link>
-                            <IconButton onClick={this.handleMenu} color="inherit">
+                            <IconButton onClick={this.goToCart} color="inherit">
                                 <ShoppingCart/>
                             </IconButton>
                             <IconButton onClick={this.handleMenu} color="inherit">
-                                <AccountCircle/>
+                                <MoreVert/>
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
