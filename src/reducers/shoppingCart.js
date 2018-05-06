@@ -4,6 +4,7 @@ export default(state = [], payload) => {
             return [
                 ...state,
                 payload.item
+
             ];
         default:
             return state;

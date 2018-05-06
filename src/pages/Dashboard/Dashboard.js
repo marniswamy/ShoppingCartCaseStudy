@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux'
 import HeaderComponent from '../../components/Header'
 import Cart from '../../components/Cart';
-import {productList} from '../../data/availableProducts';
+import {selectAvailableProducts} from '../../selectors/selectors';
 
 class Dashboard extends Component {
     render() {
-        console.log('productList', productList);
+        console.log('productList', this.props.availableProducts);
         return (
             <div>
                 <HeaderComponent/>
@@ -15,4 +16,16 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+    return {
+      availableProducts: selectAvailableProducts(state)
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+    
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

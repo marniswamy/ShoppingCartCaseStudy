@@ -17,7 +17,7 @@ class Cart extends Component {
                         .map((item, id) => {
                             return <li key={id}>{item}</li>
                         })
-}
+                    }
                 </ul>
             </div>
         )
