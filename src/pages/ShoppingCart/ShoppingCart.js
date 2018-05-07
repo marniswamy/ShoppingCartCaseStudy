@@ -2,11 +2,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import HeaderComponent from '../../components/Header'
 import CheckoutList from '../../components/CheckoutList';
-import {selectCartItems} from '../../selectors/selectors';
+import {selectCartProducts} from '../../selectors/selectors';
 
 class ShoppingCart extends Component {
     render() {
-        console.log("cartItems", this.props.cartItems);
         return (
             <div>
                 <HeaderComponent
@@ -24,12 +23,7 @@ class ShoppingCart extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        cartItems: selectCartItems(state)
+        cartItems: selectCartProducts(state)
     }
 }
-
-const mapDispatchToProps = (dispatch) => {
-    return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);
+export default connect(mapStateToProps)(ShoppingCart);

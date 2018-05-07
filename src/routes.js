@@ -11,7 +11,7 @@ const Routes = (props) => {
     return ( 
         <Router {...props}>
           <Route component={App}>
-          <Route path="/" component={Welcome}/>
+            <Route path="/" component={Welcome} />
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/checkout" component={ShoppingCart}/>
             <Route path="*" component={NotFount}/>

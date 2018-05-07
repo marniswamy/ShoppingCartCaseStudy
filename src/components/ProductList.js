@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux';
 import Grid from 'material-ui/Grid';
 import Product from './Product';
 import {addItemToCart} from '../actions/addToCart';
@@ -19,6 +20,7 @@ class ProductList extends Component {
 
     render() {
         const {categories, products} = this.props;
+        console.log('this.props', this.props);
         return (
             <div className="product-container">
                 <Grid container spacing={8}>
@@ -26,16 +28,18 @@ class ProductList extends Component {
                         <Paper style={styles.paper}>
                             <p className="product-title">Categories</p>
                             {categories.map(([group, categories]) => 
-                                <Fragment>
+                                <Fragment  key={group}>
                                     <Typography className="headline"
                                         variant="subheading"
                                         >
                                         {group}
                                     </Typography>
                                     <List component="ul">
-                                        {categories.map(({subCategory}) => <ListItem button>
-                                            <ListItemText primary={subCategory}/>
-                                        </ListItem>)}
+                                        {categories.map(item => 
+                                            <ListItem button key={item.productId} >
+                                                <ListItemText primary={item.subCategory}/>
+                                            </ListItem>
+                                        )}
                                     </List>
                                 </Fragment>
                            )}
@@ -65,7 +69,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addItemToCart: item => dispatch(addItemToCart(item))
+        addItemToCart: item => bindActionCreators(dispatch(addItemToCart(item)))
     }
 }
 

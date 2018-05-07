@@ -2,20 +2,21 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import HeaderComponent from '../../components/Header'
 import ProductList from '../../components/ProductList';
-import {selectAvailableProducts, selectCategories, selectCartItems} from '../../selectors/selectors';
+import {selectAvailableProducts, selectCategories, selectCartProducts} from '../../selectors/selectors';
 
 class Dashboard extends Component {
     render() {
-        console.log("cartItems", this.props.cartItems);
+        console.log('cartItems', this.props.cartItems);
+        const {cartItems, categories, availableProducts} = this.props;
         return (
             <div>
                 <HeaderComponent
-                   count={this.props.cartItems.length}
+                   count={cartItems.length}
                 />
                 <div className="body-container">
                 <ProductList
-                    categories={this.props.categories}
-                    products={this.props.availableProducts}
+                    categories={categories}
+                    products={availableProducts}
                 />
                 </div>
             </div>
@@ -23,17 +24,18 @@ class Dashboard extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    console.log('state', state.shoppingCart.cartItems.length);
+const mapStateToProps = (state, props) => {
     return {
         availableProducts: selectAvailableProducts(state),
         categories: selectCategories(state),
-        cartItems: selectCartItems(state)
+        cartItems: selectCartProducts(state)
     }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+      
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

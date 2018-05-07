@@ -1,8 +1,8 @@
 import {createSelector} from 'reselect'
 
-const getState = (state) => state.shoppingCart;
+const getApplicationState = (state) => state.shoppingCart;
 
-export const selectAvailableProducts = createSelector([getState], (state) => {
+export const selectAvailableProducts = createSelector([getApplicationState], (state) => {
     return state.availableProducts;
 });
 
@@ -17,9 +17,8 @@ export const selectCategories = createSelector([selectAvailableProducts], (produ
     }, {}))
 });
 
-
-export const selectCartItems = createSelector(
-    [getState], (state) => {
-        return state.cartItems;
+export const selectCartProducts = createSelector(
+    [getApplicationState], (cart) => {
+        return cart.cartItems
     }
 );
