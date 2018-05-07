@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import HeaderComponent from '../../components/Header'
 import ProductList from '../../components/ProductList';
-import {selectAvailableProducts, selectCategories, selectedProductsCount} from '../../selectors/selectors';
+import {selectAvailableProducts, selectCategories, selectCartItems} from '../../selectors/selectors';
 
 class Dashboard extends Component {
     render() {
-        console.log("productCount", this.props.productCount);
+        console.log("cartItems", this.props.cartItems);
         return (
             <div>
                 <HeaderComponent
-                  count={this.props.productCount}
+                   count={this.props.cartItems.length}
                 />
                 <div className="body-container">
                 <ProductList
@@ -24,10 +24,11 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log('state', state.shoppingCart.cartItems.length);
     return {
         availableProducts: selectAvailableProducts(state),
         categories: selectCategories(state),
-        productCount: selectedProductsCount(state)
+        cartItems: selectCartItems(state)
     }
 }
 

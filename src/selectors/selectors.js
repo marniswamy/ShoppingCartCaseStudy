@@ -1,5 +1,4 @@
 import {createSelector} from 'reselect'
-import * as _ from 'lodash';
 
 const getState = (state) => state.shoppingCart;
 
@@ -8,21 +7,19 @@ export const selectAvailableProducts = createSelector([getState], (state) => {
 });
 
 export const selectCategories = createSelector([selectAvailableProducts], (products) => {
-    return _
-        .chain(products)
-        .groupBy('category')
-        .toPairs()
-        .map(function (currentItem) {
-            return _.zipObject([
-                'category', 'item'
-            ], currentItem);
-        })
-        .value();
+    return Object.entries(products.reduce((products, product) => {
+        const { category } = product;
+        products[category] = products[category]
+         ? [...products[category], product]
+         :
+         [product]
+         return products;
+    }, {}))
 });
 
-export const selectedProductsCount = createSelector(
+
+export const selectCartItems = createSelector(
     [getState], (state) => {
-        console.log(' state.cartItems.length',  state.cartItems.length);
-        return state.cartItems.length;
+        return state.cartItems;
     }
 );

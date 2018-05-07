@@ -1,11 +1,13 @@
 import {productList} from '../data/availableProducts';
+import { merge } from 'lodash';
+
 
 export const defaultInitialState = {
     cartItems: [],
     availableProducts: productList
 }
 
-export default(state = defaultInitialState, payload) => {
+export const shoppingCart = (state = defaultInitialState, payload) => {
     switch (payload.type) {
         case 'addItem':
             return [
@@ -14,13 +16,11 @@ export default(state = defaultInitialState, payload) => {
 
             ];
         case 'ADD_ITEM_TO_CART':
-            const {item} = payload;
-            console.log('payload.item', item, state);
-            const newItems = state
-                .cartItems
-                .push(item);
-            console.log('newItems', newItems);
-            return state;
+           const {item} = payload;
+           const { cartItems } = state;
+           const availableItems = cartItems;
+           Array.prototype.push.apply(availableItems, [item]);
+           return merge(state, {cartItems: availableItems}); 
         default:
             return state;
     }
