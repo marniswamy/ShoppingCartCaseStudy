@@ -1,18 +1,16 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux'
 import Grid from 'material-ui/Grid';
 import Product from './Product';
+import { addItemToCart } from '../actions/addToCart';
 
 class ProductList extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            products: ['Item1', 'Item2', 'Item3']
-        }
+    handleAddToCart = (item) => {
+        this.props.addItemToCart(item);
     }
 
     render() {
-        console.log('getCaterogies', this.props);
         const { categories, products } = this.props;
         return (
             <div className="product-container">
@@ -20,12 +18,12 @@ class ProductList extends Component {
                     <Grid item xs={12} sm={2}>
                         <p className="product-title">Categories</p>
                        {
-                        categories.map((item, key) => {
+                        categories.map(item => {
                             return <div>
-                             <h4 key={key}>{item.category}</h4>
+                             <h4 key={item.category}>{item.category}</h4>
                              {
-                                item.item.map((prod, key) => {
-                                    return <p key={key}>{prod.subCategory}</p>
+                                item.item.map(prod => {
+                                    return <p key={prod.productId}>{prod.subCategory}</p>
                                 })
                              }
                              </div>
@@ -36,9 +34,12 @@ class ProductList extends Component {
                         <p className="product-title">Available Products</p>
                         <div className="product-list">
                         {
-                            products.map((item, key) =>{
-                                return  <Product key={key} product={item} />
-                            })
+                            products.map(item => 
+                                <Product 
+                                key={item.productId} 
+                                product={item}
+                                handleAddToCart={this.handleAddToCart}
+                                />)
                         }
                            
                         </div>
@@ -49,4 +50,17 @@ class ProductList extends Component {
     }
 }
 
-export default ProductList;
+
+const mapStateToProps = (state) => {
+    return {
+       
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addItemToCart: item => dispatch(addItemToCart(item))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

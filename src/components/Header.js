@@ -53,10 +53,10 @@ class HeaderComponent extends React.Component {
 
         return (
             <div className={classes.root}>
-                <AppBar position="static">
+                <AppBar position="fixed">
                     <Toolbar>
                         <Typography variant="title" color="inherit" className={classes.flex}>
-                            Shopping Cart
+                            Shopping Cart {this.props.count}
                         </Typography>
                         <div>
                             <IconButton onClick={this.goToCart} color="inherit">

@@ -2,17 +2,22 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import HeaderComponent from '../../components/Header'
 import ProductList from '../../components/ProductList';
-import {selectAvailableProducts, selectCategories} from '../../selectors/selectors';
+import {selectAvailableProducts, selectCategories, selectedProductsCount} from '../../selectors/selectors';
 
 class Dashboard extends Component {
     render() {
+        console.log("productCount", this.props.productCount);
         return (
             <div>
-                <HeaderComponent/>
+                <HeaderComponent
+                  count={this.props.productCount}
+                />
+                <div className="body-container">
                 <ProductList
                     categories={this.props.categories}
                     products={this.props.availableProducts}
                 />
+                </div>
             </div>
         )
     }
@@ -21,7 +26,8 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
     return {
         availableProducts: selectAvailableProducts(state),
-        categories: selectCategories(state)
+        categories: selectCategories(state),
+        productCount: selectedProductsCount(state)
     }
 }
 

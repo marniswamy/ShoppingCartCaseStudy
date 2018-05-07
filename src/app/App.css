@@ -28,3 +28,17 @@ a {
 .product-title {
   padding-left: 16px;
 }
+
+.body-container {
+  margin-top: 65px;
+}
+
+.product-card {
+  width: 240px;
+  height: 200px;
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+

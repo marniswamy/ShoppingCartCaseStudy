@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {withStyles} from 'material-ui/styles';
 import Card, {CardActions, CardContent} from 'material-ui/Card';
 import Button from 'material-ui/Button';
@@ -7,24 +6,20 @@ import Typography from 'material-ui/Typography';
 import CurrencyFormatter from './CurrencyFormatter';
 
 const styles = {
-    card: {
-        width: 240,
-        height: 200,
-        margin: 8
-    },
     title: {
         marginBottom: 16,
-        fontSize: 14
+        fontSize: 14,
+        fontWeight: 600
     }
 };
 
 const ProductComponent = (props) => {
-    const {classes, product} = props;
+    const {classes, product, handleAddToCart} = props;
     return (
         <div>
-            <Card className={classes.card}>
+            <Card className="product-card">
                 <CardContent>
-                    <Typography className={classes.title} color="textSecondary">
+                    <Typography className={classes.title} color="primary">
                         {product.name}
                     </Typography>
                     <Typography component="p">
@@ -36,15 +31,12 @@ const ProductComponent = (props) => {
                         Price :
                         <CurrencyFormatter amount={product.price}/>
                     </Typography>
-                    <Button size="small">Add to Cart</Button>
+                    <Button variant="raised" color="primary" size="small" onClick={() => handleAddToCart(product)}>Add to Cart</Button>
                 </CardActions>
             </Card>
         </div>
     );
 }
 
-ProductComponent.propTypes = {
-    classes: PropTypes.object
-};
 
 export default withStyles(styles)(ProductComponent);
