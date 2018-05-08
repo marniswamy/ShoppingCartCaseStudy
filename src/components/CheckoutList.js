@@ -4,13 +4,6 @@ import Grid from 'material-ui/Grid';
 import Product from './Product';
 import {Paper} from 'material-ui';
 
-const styles = {
-    Paper: {
-        padding: 20,
-        marginBottom: 10
-    }
-}
-
 class CheckoutList extends Component {
 
     handleAddToCart = (item) => {
@@ -22,7 +15,8 @@ class CheckoutList extends Component {
         return (
             <div className="product-container">
                 <Grid container spacing={8}>
-                    <Grid item xs={12} sm={10}>
+                    <Grid item xs={12} sm={8}>
+                    <Paper>
                         <p className="product-title">Checkout Products</p>
                         <div className="product-list">
                             {products.map(item => <Product
@@ -31,12 +25,14 @@ class CheckoutList extends Component {
                                 handleAddToCart={this.handleAddToCart}/>)
                             }
                         </div>
+                        </Paper>
                     </Grid>
-                    <Grid  item xs={12} sm={2}>
-                    <Paper style={styles.paper}>
-                        <p className="product-title">Check out </p>
-                    </Paper>
-                </Grid>
+                    <Grid item xs={12} sm={4}>
+                        <Paper>
+                            <p className="product-title">Check out
+                            </p>
+                        </Paper>
+                    </Grid>
                 </Grid>
             </div>
         )
@@ -48,9 +44,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-       
-    }
+    return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckoutList);
