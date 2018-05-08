@@ -10,7 +10,7 @@ export const shoppingCart = (state = defaultInitialState, payload) => {
         case 'ADD_ITEM_TO_CART':
             const {item} = payload;
             const {cartItems} = state;
-            const availableItems = cartItems;
+            const availableItems = cartItems.slice();
             availableItems.push({item});
             return {
                 ...state,
