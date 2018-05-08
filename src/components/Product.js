@@ -31,7 +31,13 @@ const ProductComponent = (props) => {
                         Price :
                         <CurrencyFormatter amount={product.price}/>
                     </Typography>
-                    <Button variant="raised" color="primary" size="small" onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+                    <Button
+                     variant="raised" 
+                     color="primary" 
+                     size="small"
+                     disabled={product.stock <= 0}
+                     onClick={() => handleAddToCart(product)}
+                     >Add to Cart</Button>
                 </CardActions>
             </Card>
         </div>

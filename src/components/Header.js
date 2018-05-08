@@ -8,6 +8,7 @@ import IconButton from 'material-ui/IconButton';
 import MoreVert from '@material-ui/icons/MoreVert';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Menu, {MenuItem} from 'material-ui/Menu';
+import {Link} from 'react-router';
 
 const styles = {
     root: {
@@ -42,7 +43,6 @@ class HeaderComponent extends React.Component {
 
     goToCart = () => {
         console.log("go to cart");
-        window.location.href="./checkout";
     };
 
 
@@ -59,6 +59,7 @@ class HeaderComponent extends React.Component {
                             Shopping Cart {this.props.count}
                         </Typography>
                         <div>
+                        <Link to="/checkout">checkout</Link>
                             <IconButton onClick={this.goToCart} color="inherit">
                                 <ShoppingCart/>
                             </IconButton>

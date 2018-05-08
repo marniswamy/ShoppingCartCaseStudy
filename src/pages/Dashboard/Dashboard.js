@@ -6,7 +6,6 @@ import {selectAvailableProducts, selectCategories, selectCartProducts} from '../
 
 class Dashboard extends Component {
     render() {
-        console.log('cartItems', this.props.cartItems);
         const {cartItems, categories, availableProducts} = this.props;
         return (
             <div>
