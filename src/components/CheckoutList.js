@@ -1,29 +1,28 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux'
 import Grid from 'material-ui/Grid';
-import Product from './Product';
 import {Paper} from 'material-ui';
+import CurrencyFormatter from './CurrencyFormatter';
+import ListViewComponent from '.././components/ListView';
 
 class CheckoutList extends Component {
 
-    handleAddToCart = (item) => {
-        // remove item
-    }
-
     render() {
-        const {products} = this.props;
+        const {cartProducts, amount} = this.props;
         return (
             <div className="product-container">
                 <Grid container spacing={8}>
                     <Grid item xs={12} sm={8}>
                     <Paper>
-                        <p className="product-title">Checkout Products</p>
-                        <div className="product-list">
-                            {products.map(item => <Product
-                                key={item.productId}
-                                product={item}
-                                handleAddToCart={this.handleAddToCart}/>)
-                            }
+                        <p className="product-title">Cart Products</p>
+                        <div>
+                        {
+                            cartProducts.map(product => 
+                                <ListViewComponent
+                                  key={product.productId}
+                                  product={product}
+                                />
+                            )
+                        }
                         </div>
                         </Paper>
                     </Grid>
@@ -31,6 +30,9 @@ class CheckoutList extends Component {
                         <Paper>
                             <p className="product-title">Check out
                             </p>
+                            <p className="product-title">Total Amount : 
+                            <CurrencyFormatter amount={amount}/>
+                         </p>
                         </Paper>
                     </Grid>
                 </Grid>
@@ -39,12 +41,5 @@ class CheckoutList extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {}
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CheckoutList);
+export default CheckoutList;

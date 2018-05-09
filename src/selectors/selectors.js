@@ -22,3 +22,11 @@ export const selectCartProducts = createSelector(
         return cart.cartItems
     }
 );
+
+
+export const selectTotalAmount = createSelector(
+    [selectCartProducts], (product) => {
+        return 100;
+    }
+);
+

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import HeaderComponent from '../../components/Header'
 import CheckoutList from '../../components/CheckoutList';
-import {selectCartProducts} from '../../selectors/selectors';
+import {selectCartProducts, selectTotalAmount} from '../../selectors/selectors';
 
 class ShoppingCart extends Component {
     render() {
@@ -13,7 +13,8 @@ class ShoppingCart extends Component {
                 />
                 <div className="body-container">
                 <CheckoutList
-                    products={this.props.cartItems}
+                    cartProducts={this.props.cartItems}
+                    amount={this.props.totalAmount}
                 />
                 </div>
             </div>
@@ -23,7 +24,8 @@ class ShoppingCart extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        cartItems: selectCartProducts(state)
+        cartItems: selectCartProducts(state),
+        totalAmount: selectTotalAmount(state)
     }
 }
 export default connect(mapStateToProps)(ShoppingCart);

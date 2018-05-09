@@ -11,7 +11,7 @@ export const shoppingCart = (state = defaultInitialState, payload) => {
             const {item} = payload;
             const {cartItems} = state;
             const availableItems = cartItems.slice();
-            availableItems.push({item});
+            availableItems.push(item);
             return {
                 ...state,
                 cartItems: availableItems
