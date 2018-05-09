@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
+import {addItemToCart} from '../../actions/cartActions';
 import HeaderComponent from '../../components/Header'
 import ProductList from '../../components/ProductList';
-import {addItemToCart} from '../../actions/addToCart';
 import {selectAvailableProducts, selectCategories, selectCartProducts} from '../../selectors/selectors';
 
 class Dashboard extends Component {
 
-    handleAddToCart = (item) => {
-        this.props.addItemToCart(item);
+    handleAddToCart = (productId) => {
+        this.props.addItemToCart(productId);
     }
 
     render() {

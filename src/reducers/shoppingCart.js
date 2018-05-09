@@ -1,4 +1,5 @@
 import {productList} from '../data/availableProducts';
+import remove from 'lodash/remove';
 
 export const defaultInitialState = {
     cartItems: [],
@@ -16,6 +17,13 @@ export const shoppingCart = (state = defaultInitialState, payload) => {
                 ...state,
                 cartItems: availableItems
             };
+        case 'REMOVE_ITEM_FROM_CART':
+        const {productId} = payload;
+        const updatedItems = remove(state.cartItems.filter(product => product.productId !== productId));
+        return {
+            ...state,
+            cartItems: updatedItems
+        }
         default:
             return state;
     }

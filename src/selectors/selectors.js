@@ -33,3 +33,8 @@ export const selectTotalAmount = createSelector(
     }
 );
 
+export const selectAtleastforFootwear = createSelector(
+    [selectCartProducts], (cartItems) => {
+        return !!cartItems.filter(item => item.subCategory === 'Footware').length
+    }
+);

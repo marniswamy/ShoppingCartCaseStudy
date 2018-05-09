@@ -6,7 +6,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
 
-const ListViewComponent = ({product}) => (
+const ListViewComponent = ({product, handleDeleteFromCart}) => (
     <div>
         <List>
             <ListItem>
@@ -18,10 +18,11 @@ const ListViewComponent = ({product}) => (
                 <ListItemText
                     primary={product.name}
                     secondary={`${product.category} - ${product.subCategory}`}/>
+                 <span className="product-amount">   
                 <CurrencyFormatter amount={product.price}/>
-                &nbsp;&nbsp;
+                </span>
                 <ListItemSecondaryAction>
-                    <IconButton aria-label="Delete">
+                    <IconButton aria-label="Delete" onClick={() => handleDeleteFromCart(product.productId)}>
                         <DeleteIcon/>
                     </IconButton>
                 </ListItemSecondaryAction>

@@ -22,10 +22,10 @@ const ProductComponent = (props) => {
                     <Typography className={classes.title} color="primary">
                         {product.name}
                     </Typography>
-                    <Typography component="p">
-                        Available stock : {product.stock}
-                    </Typography>
                 </CardContent>
+                <p className="stock-label">
+                Available stock : {product.stock}
+            </p>
                 <CardActions>
                     <Typography component="p">
                         Price :
