@@ -26,7 +26,10 @@ export const selectCartProducts = createSelector(
 
 export const selectTotalAmount = createSelector(
     [selectCartProducts], (product) => {
-        return 100;
+        if(product.length) {
+            return product.map(item => item.price).reduce((acc, val) => acc + val);
+        }
+        return 0;
     }
 );
 

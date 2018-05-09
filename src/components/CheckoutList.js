@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Grid from 'material-ui/Grid';
-import {Paper} from 'material-ui';
+import {Paper, Button} from 'material-ui';
+import Typography from 'material-ui/Typography';
 import CurrencyFormatter from './CurrencyFormatter';
 import ListViewComponent from '.././components/ListView';
 
@@ -33,6 +34,38 @@ class CheckoutList extends Component {
                             <p className="product-title">Total Amount : 
                             <CurrencyFormatter amount={amount}/>
                          </p>
+                         <div className="coupon-section">
+                         <Typography variant="title" gutterBottom>
+                             Coupons available
+                        </Typography>
+                        <Typography gutterBottom >
+                            {`
+                             1. £5.00 off your order 
+                            `}
+                         </Typography>
+                         <Typography gutterBottom >
+                            {`
+                             2. £10.00 off when you spend over £50.00 
+                            `}
+                         </Typography>
+                         <Typography gutterBottom >
+                            {`
+                             3. £15.00 off when you have bought at least one footwear item and spent
+                             over £75.00
+                            `}
+                         </Typography>
+                         </div>
+                         <p className="product-title">Payable Amount : 
+                         <CurrencyFormatter amount={amount}/>
+                         <Typography variant="caption" gutterBottom align="left">
+                             After applicable discounts
+                        </Typography>
+                      </p>
+                      <p align="right">
+                      <Button variant="raised" color="primary">
+                        Place Order
+                      </Button>
+                      </p>
                         </Paper>
                     </Grid>
                 </Grid>
