@@ -25,14 +25,15 @@ const styles = {
     }
 };
 
-const HeaderComponent = ({count, classes}) => (
+const HeaderComponent = ({count, classes, showMenu}) => (
     <div className={classes.root}>
         <AppBar position="fixed">
             <Toolbar>
                 <Typography variant="title" color="inherit" className={classes.flex}>
                     Shopping Cart
                 </Typography>
-                <div>
+                { showMenu && 
+                    <div>
                     <IconButton color="inherit">
                         <Badge badgeContent={count} color="secondary">
                             <ShoppingCart/>
@@ -42,6 +43,12 @@ const HeaderComponent = ({count, classes}) => (
                         <Link to="/checkout">Checkout</Link>
                     </Button>
                 </div>
+                }
+                { !showMenu && 
+                    <Button color="inherit" className="checkout-button">
+                    <Link to="/dashboard">Dashboard</Link>
+                </Button>
+                }
             </Toolbar>
         </AppBar>
     </div>

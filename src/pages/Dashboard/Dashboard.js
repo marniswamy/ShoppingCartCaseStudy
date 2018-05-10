@@ -7,6 +7,14 @@ import ProductList from '../../components/ProductList';
 import {selectAvailableProducts, selectCategories, selectCartProducts} from '../../selectors/selectors';
 
 class Dashboard extends Component {
+   
+    constructor(props) {
+        super(props)
+        this.state = {
+            showMenu : true
+        }
+    }
+    
 
     handleAddToCart = (productId) => {
         this.props.addItemToCart(productId);
@@ -18,6 +26,7 @@ class Dashboard extends Component {
             <div>
                 <HeaderComponent 
                     count={cartItems.length}
+                    showMenu={this.state.showMenu}
                 />
                 <div className="body-container">
                     <ProductList

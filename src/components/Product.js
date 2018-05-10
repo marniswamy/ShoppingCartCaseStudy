@@ -9,40 +9,36 @@ const styles = {
     title: {
         marginBottom: 16,
         fontSize: 14,
-        fontWeight: 600
+        fontWeight: 600,
+        minHeight:86
     }
 };
 
-const ProductComponent = (props) => {
-    const {classes, product, handleAddToCart} = props;
-    return (
-        <div>
-            <Card className="product-card">
-                <CardContent>
-                    <Typography className={classes.title} color="primary">
-                        {product.name}
-                    </Typography>
-                </CardContent>
-                <p className="stock-label">
+const ProductComponent = ({classes, product, handleAddToCart}) => (
+    <div>
+        <Card className="product-card">
+            <CardContent>
+                <Typography className={classes.title} color="primary">
+                    {product.name}
+                </Typography>
+                <Typography component="p">
                 Available stock : {product.stock}
-            </p>
-                <CardActions>
-                    <Typography component="p">
-                        Price :
-                        <CurrencyFormatter amount={product.price}/>
-                    </Typography>
-                    <Button
-                     variant="raised" 
-                     color="primary" 
-                     size="small"
-                     disabled={product.stock <= 0}
-                     onClick={() => handleAddToCart(product)}
-                     >Add to Cart</Button>
-                </CardActions>
-            </Card>
-        </div>
-    );
-}
-
+            </Typography>
+            </CardContent>
+            <CardActions className="card-actions">
+                <Typography component="p">
+                    Price :
+                    <CurrencyFormatter amount={product.price}/>
+                </Typography>
+                <Button
+                    variant="raised"
+                    color="primary"
+                    size="small"
+                    disabled={product.stock <= 0}
+                    onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+            </CardActions>
+        </Card>
+    </div>
+);
 
 export default withStyles(styles)(ProductComponent);

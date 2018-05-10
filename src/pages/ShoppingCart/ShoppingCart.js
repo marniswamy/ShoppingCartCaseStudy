@@ -12,6 +12,13 @@ import {
 
 class ShoppingCart extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            showMenu : false
+        }
+    }
+
     handleDeleteFromCart = (item) => {
         this.props.removeItemFromCart(item)
     }
@@ -21,6 +28,7 @@ class ShoppingCart extends Component {
             <div>
                 <HeaderComponent
                   count={this.props.cartItems.length}
+                  showMenu={this.state.showMenu}
                 />
                 <div className="body-container">
                 <CheckoutList
