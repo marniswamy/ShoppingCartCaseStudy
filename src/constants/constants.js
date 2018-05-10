@@ -1,3 +1,7 @@
+/**
+ * availableCoupons is the constant array, where we stored the all available coupons
+ * available for the user.
+ */
 export const availableCoupons = [
     {   
         id: 1,

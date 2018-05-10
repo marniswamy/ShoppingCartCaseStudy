@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {withStyles} from 'material-ui/styles';
 import {
     Badge,
@@ -32,8 +31,7 @@ const HeaderComponent = ({count, classes, showMenu}) => (
                 <Typography variant="title" color="inherit" className={classes.flex}>
                     Shopping Cart
                 </Typography>
-                { showMenu && 
-                    <div>
+                {showMenu && <div>
                     <IconButton color="inherit">
                         <Badge badgeContent={count} color="secondary">
                             <ShoppingCart/>
@@ -44,8 +42,7 @@ const HeaderComponent = ({count, classes, showMenu}) => (
                     </Button>
                 </div>
                 }
-                { !showMenu && 
-                    <Button color="inherit" className="checkout-button">
+                {!showMenu && <Button color="inherit" className="checkout-button">
                     <Link to="/dashboard">Dashboard</Link>
                 </Button>
                 }
@@ -53,9 +50,5 @@ const HeaderComponent = ({count, classes, showMenu}) => (
         </AppBar>
     </div>
 );
-
-HeaderComponent.propTypes = {
-    classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(HeaderComponent);

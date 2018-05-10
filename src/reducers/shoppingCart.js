@@ -1,6 +1,13 @@
 import {productList} from '../data/availableProducts';
 import remove from 'lodash/remove';
 
+/**
+ * defaultInitialState is the initial state of our redux store. 
+ * It has availableProducts default we are loading from local object
+ * and cartItems is the array taken to store the seleted item into the
+ * cart. Similarly appliedCoupon and selectedMenu variables taken in 
+ * the store for our local preferences.
+ */
 export const defaultInitialState = {
     cartItems: [],
     availableProducts: productList,
@@ -8,6 +15,15 @@ export const defaultInitialState = {
     selectedMenu: {}
 }
 
+
+/**
+ * shoppingCart method is used to handle the actions types based the
+ * conditions written.
+ * 
+ * @param {Object} state as a param 
+ * @param {Object} payload as a param
+ * @returns {Object} returns the state object. 
+ */
 export const shoppingCart = (state = defaultInitialState, payload) => {
     switch (payload.type) {
         case 'ADD_ITEM_TO_CART':

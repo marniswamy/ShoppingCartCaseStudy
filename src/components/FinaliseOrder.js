@@ -25,10 +25,8 @@ class FinaliseOrder extends React.Component {
     window.location.href = "./";
   };
 
-
   render() {
     const { fullScreen, amount } = this.props;
-
     return (
       <div>
         <Button onClick={this.handleClickOpen} disabled={!amount} variant="raised" color="primary">Place Order</Button>

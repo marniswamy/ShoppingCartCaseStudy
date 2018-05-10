@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {Link} from 'react-router';
 
-class NotFound extends Component {
-    render() {
-        return (
-            <div>
-                Oops something went wrong!
-            </div>
-        );
-    }
-}
+const NotFound = () => (
+    <div className="welcome-page">
+        <h1>Oops something went wrong!</h1>
+        <h3>
+            Go to
+            <Link to="/">Welcome</Link>
+            page</h3>
+    </div>
+);
 
 export default NotFound;

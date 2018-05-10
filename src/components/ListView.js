@@ -31,7 +31,7 @@ const ListViewComponent = ({
                     <ListItemText
                         primary={selectedProduct.name}
                         secondary={`${selectedProduct.category} - ${selectedProduct.subCategory}`}/> {!!availablestock
-                        ? <span className="stock-label">{`${availablestock} items left`}</span>
+                        ? <span className="stock-label">{`${availablestock} Items left`}</span>
                         : <span className="stock-label-red">Out of stock</span>
                         }
                     <div className="product-actions">
