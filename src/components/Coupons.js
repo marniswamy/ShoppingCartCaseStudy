@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Tooltip} from 'material-ui';
+import {Button, Tooltip, Typography} from 'material-ui';
 import {availableCoupons} from '../constants/constants';
 
 /*
@@ -49,6 +49,14 @@ const Coupons = ({applicableCoupons, handleAppleCoupon, appliedCoupon}) => (
                 </Button>
             </div>
         </Tooltip>
+        {!!appliedCoupon && <Typography
+            variant="caption"
+            className="remove-link"
+            gutterBottom
+            onClick={() => handleAppleCoupon(0)}>
+            Remove Coupon
+        </Typography>
+}
     </div>
 );
 

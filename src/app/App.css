@@ -106,3 +106,10 @@ a {
 .coupon-applied p{
   font-size: 18px;
 }
+
+.remove-link {
+  cursor: pointer;
+  position: relative;
+  text-decoration: underline;
+  top: 16px;
+}

@@ -11,8 +11,10 @@ const CheckoutList = ({cartProducts, amount, handleDeleteFromCart,
             <Grid item xs={12} sm={8}>
                 <Paper>
                     <p className="product-title">Cart Products</p>
-                    {cartProducts.length === 0 && <p>Your cart is empty</p>
-}
+                    {cartProducts.length === 0 && 
+                        <p className="product-title" >
+                        Your cart is empty</p>
+                    }
                     <div>
                         {cartProducts.map((product, index) => <ListViewComponent
                             key={index}
