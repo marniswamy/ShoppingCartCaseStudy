@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-import {addItemToCart} from '../../actions/cartActions';
+import {addItemToCart, selectedMenuItem} from '../../actions/cartActions';
 import HeaderComponent from '../../components/Header'
 import ProductList from '../../components/ProductList';
-import {selectAvailableProducts, selectCategories, selectCartProducts} from '../../selectors/selectors';
+import {
+    selectAvailableProducts, 
+    selectCategories, 
+    selectCartProducts,
+    selectMenuState
+} from '../../selectors/selectors';
 
 class Dashboard extends Component {
    
@@ -14,14 +19,21 @@ class Dashboard extends Component {
             showMenu : true
         }
     }
-    
 
     handleAddToCart = (productId) => {
         this.props.addItemToCart(productId);
     }
 
+    handleSelectMenu = (category, subCategory) => {
+        const menuItem = {
+            category : category,
+            subCategory : subCategory
+        }
+        this.props.selectedMenuItem(menuItem);
+    }
+
     render() {
-        const {cartItems, categories, availableProducts} = this.props;
+        const {cartItems, categories, availableProducts, selectedMenu} = this.props;
         return (
             <div>
                 <HeaderComponent 
@@ -32,7 +44,10 @@ class Dashboard extends Component {
                     <ProductList
                         categories={categories}
                         products={availableProducts}
-                        handleAddToCart={this.handleAddToCart}/>
+                        selectedMenu={selectedMenu}
+                        handleAddToCart={this.handleAddToCart}
+                        handleSelectMenu={this.handleSelectMenu}
+                    />
                 </div>
             </div>
         )
@@ -40,12 +55,18 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-    return {availableProducts: selectAvailableProducts(state), categories: selectCategories(state), cartItems: selectCartProducts(state)}
+    return {
+        availableProducts: selectAvailableProducts(state), 
+        categories: selectCategories(state), 
+        cartItems: selectCartProducts(state),
+        selectedMenu: selectMenuState(state)
+    }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addItemToCart: item => bindActionCreators(dispatch(addItemToCart(item)))
+        addItemToCart: item => bindActionCreators(dispatch(addItemToCart(item))),
+        selectedMenuItem: menuItem => bindActionCreators(dispatch(selectedMenuItem(menuItem)))
     }
 }
 

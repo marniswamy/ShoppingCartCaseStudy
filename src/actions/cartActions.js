@@ -19,3 +19,10 @@ export const applyCouponOnCart = (coupon) => {
         coupon
     }
 }
+
+export const selectedMenuItem = (menuItem) => {
+    return {
+        type: "SELETED_MENU",
+        menuItem
+    }
+}

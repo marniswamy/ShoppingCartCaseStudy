@@ -26,7 +26,6 @@ class ShoppingCart extends Component {
     }
 
     handleAppleCoupon = (coupon) => {
-        console.log('Coupon', coupon);
         this.props.applyCouponOnCart(coupon);
     }
 
@@ -45,7 +44,7 @@ class ShoppingCart extends Component {
                     isCouponApplicable={this.props.isAtleastOneFootwareIncart}
                     applicableCoupons={this.props.applicableCoupons}
                     handleAppleCoupon={this.handleAppleCoupon}
-                    appliedCoupon={this.props.appliedCoupon}
+                    appliedCoupon={this.props.appliedCoupon}S
                 />
                 </div>
             </div>

@@ -5,8 +5,7 @@ import Coupons from './Coupons';
 
 const CheckoutAmount = ({amount, isCouponApplicable, applicableCoupons, handleAppleCoupon, appliedCoupon}) => (
     <Paper>
-        <p className="product-title">Check out
-        </p>
+        <h3 className="product-title">Check out</h3>
         <p className="product-title">Total Amount :
             <CurrencyFormatter amount={amount}/>
         </p>

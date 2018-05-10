@@ -4,7 +4,8 @@ import remove from 'lodash/remove';
 export const defaultInitialState = {
     cartItems: [],
     availableProducts: productList,
-    appliedCoupon : null
+    appliedCoupon: null,
+    selectedMenu: {}
 }
 
 export const shoppingCart = (state = defaultInitialState, payload) => {
@@ -19,18 +20,24 @@ export const shoppingCart = (state = defaultInitialState, payload) => {
                 cartItems: availableItems
             };
         case 'REMOVE_ITEM_FROM_CART':
-        const {productId} = payload;
-        const updatedItems = remove(state.cartItems.filter(product => product.productId !== productId));
-        return {
-            ...state,
-            cartItems: updatedItems
-        }
+            const {productId} = payload;
+            const updatedItems = remove(state.cartItems.filter(product => product.productId !== productId));
+            return {
+                ...state,
+                cartItems: updatedItems
+            }
         case 'APPLY_COUPON':
-        const {coupon} = payload;
-        return {
-            ...state,
-            appliedCoupon: coupon
-        }
+            const {coupon} = payload;
+            return {
+                ...state,
+                appliedCoupon: coupon
+            }
+        case 'SELETED_MENU':
+            const {menuItem} = payload;
+            return {
+                ...state,
+                selectedMenu: menuItem
+            }
         default:
             return state;
     }

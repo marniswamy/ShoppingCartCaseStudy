@@ -84,3 +84,8 @@ export const selectAppliedCoupon = createSelector(
     [getApplicationState], (state) => {
     return state.appliedCoupon;
 });
+
+export const selectMenuState = createSelector(
+    [getApplicationState], (state) => {
+    return state.selectedMenu;
+});

@@ -1,4 +1,3 @@
-
 export const availableCoupons = [
     {   
         id: 1,

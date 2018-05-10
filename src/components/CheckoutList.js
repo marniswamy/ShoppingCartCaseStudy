@@ -10,7 +10,7 @@ const CheckoutList = ({cartProducts, amount, handleDeleteFromCart,
         <Grid container spacing={8}>
             <Grid item xs={12} sm={8}>
                 <Paper>
-                    <p className="product-title">Cart Products</p>
+                    <h3 className="product-title">Cart Products</h3>
                     {cartProducts.length === 0 && 
                         <p className="product-title" >
                         Your cart is empty</p>
