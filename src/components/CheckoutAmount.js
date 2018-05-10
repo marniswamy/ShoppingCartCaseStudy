@@ -10,18 +10,24 @@ const CheckoutAmount = ({amount, isCouponApplicable, applicableCoupons, handleAp
         <p className="product-title">Total Amount :
             <CurrencyFormatter amount={amount}/>
         </p>
+        <h5 className="hint">Your order is eligible for one of the below coupons</h5>
         <div className="coupon-section">
             <Coupons
                 applicableCoupons={applicableCoupons}
                 handleAppleCoupon={handleAppleCoupon}
                 appliedCoupon={appliedCoupon}
                 />
+                {  !!appliedCoupon && !!amount &&
             <div className="coupon-applied">
-                <h5>Your order is eligible for one of the coupons</h5>
+                <h5> 
+                     <p className="wish"> Congratulation !!!</p>
+                    <CurrencyFormatter amount={appliedCoupon}/> OFF coupon applied on you total amount !  
+                </h5>
             </div>
+                }
         </div>
         <p className="product-title">Payable Amount :
-            <CurrencyFormatter amount={amount - appliedCoupon}/>
+            <CurrencyFormatter amount={amount && amount - appliedCoupon}/>
             <Typography variant="caption" gutterBottom align="left">
                 After applicable discounts
             </Typography>

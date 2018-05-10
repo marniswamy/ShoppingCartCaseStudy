@@ -59,7 +59,7 @@ a {
 .coupon-section {
   padding: 8px 16px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .order-button {
@@ -83,4 +83,26 @@ a {
 .coupons button{
   margin:10px 0;
   width: 120px;
+}
+
+.hint {
+  padding: 0 16px;
+  color: cadetblue;
+}
+
+.coupon-applied {
+  background: lightgreen;
+    border-radius: 50%;
+    width: 50%;
+}
+
+.coupon-applied h5{
+  position: relative;
+  top: 8px;
+  padding: 5px 25px;
+  text-align: center;
+}
+
+.coupon-applied p{
+  font-size: 18px;
 }
