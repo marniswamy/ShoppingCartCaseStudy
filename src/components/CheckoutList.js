@@ -23,7 +23,8 @@ const CheckoutList = ({cartProducts, amount, handleDeleteFromCart,
                 </Paper>
             </Grid>
             <Grid item xs={12} sm={4}>
-                <CheckoutAmount amount={amount} 
+                <CheckoutAmount 
+                amount={amount} 
                 isCouponApplicable={isCouponApplicable}
                 applicableCoupons={applicableCoupons}
                 handleAppleCoupon={handleAppleCoupon}
