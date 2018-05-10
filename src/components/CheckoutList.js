@@ -3,6 +3,7 @@ import Grid from 'material-ui/Grid';
 import {Paper} from 'material-ui';
 import ListViewComponent from '.././components/ListView';
 import CheckoutAmount from './CheckoutAmount';
+import { groupCartProducts } from '../utils/utils';
 
 const CheckoutList = ({cartProducts, amount, handleDeleteFromCart, 
     isCouponApplicable, applicableCoupons, handleAppleCoupon, appliedCoupon}) => (
@@ -16,11 +17,14 @@ const CheckoutList = ({cartProducts, amount, handleDeleteFromCart,
                         Your cart is empty</p>
                     }
                     <div>
-                        {cartProducts.map((product, index) => <ListViewComponent
+                        {groupCartProducts(cartProducts).map((cartItem, index) => 
+                          <ListViewComponent
                             key={index}
+                            cartProducts={cartProducts}
                             handleDeleteFromCart={handleDeleteFromCart}
-                            product={product}/>)
-}
+                            product={cartItem}
+                            />
+                        )}
                     </div>
                 </Paper>
             </Grid>

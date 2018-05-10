@@ -10,7 +10,7 @@ const styles = {
         marginBottom: 16,
         fontSize: 14,
         fontWeight: 600,
-        minHeight:86
+        minHeight: 86
     }
 };
 
@@ -21,9 +21,14 @@ const ProductComponent = ({classes, product, handleAddToCart}) => (
                 <Typography className={classes.title} color="primary">
                     {product.name}
                 </Typography>
-                <Typography component="p">
-                Available stock : {product.stock}
-            </Typography>
+                {(product.stock === 0)
+                    ? <Typography component="p" color="secondary">
+                            Out of stock
+                        </Typography>
+                    : <Typography component="p">
+                       Available in Stock
+                    </Typography>
+                }
             </CardContent>
             <CardActions className="card-actions">
                 <Typography component="p">

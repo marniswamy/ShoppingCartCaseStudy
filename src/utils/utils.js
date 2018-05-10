@@ -37,3 +37,15 @@ export const filterProducts = (products, menu) => {
     }
     return products;
 }
+
+export const groupCartProducts = (products) => {
+    return _.chain(products)
+    .groupBy('productId')
+    .toPairs()
+    .map(function (currentItem) {
+        return _.zipObject([
+            'productId', 'item'
+        ], currentItem);
+    })
+    .value();
+}
