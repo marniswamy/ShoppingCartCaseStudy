@@ -1,14 +1,9 @@
 import React from 'react';
-import {
-    Paper,
-    Button,
-    Typography,
-} from 'material-ui';
+import {Paper, Button, Typography} from 'material-ui';
 import CurrencyFormatter from './CurrencyFormatter';
-import { getAmountAfterDiscount } from '../utils/utils';
+import Coupons from './Coupons';
 
-
-const CheckoutAmount = ({amount, isCouponApplicable}) => (
+const CheckoutAmount = ({amount, isCouponApplicable, applicableCoupons, handleAppleCoupon, appliedCoupon}) => (
     <Paper>
         <p className="product-title">Check out
         </p>
@@ -16,28 +11,17 @@ const CheckoutAmount = ({amount, isCouponApplicable}) => (
             <CurrencyFormatter amount={amount}/>
         </p>
         <div className="coupon-section">
-            <Typography variant="title" gutterBottom>
-                Coupons available
-            </Typography>
-            <Typography gutterBottom>
-                {`
-     1. £5.00 off your order 
-    `}
-            </Typography>
-            <Typography gutterBottom>
-                {`
-     2. £10.00 off when you spend over £50.00 
-    `}
-            </Typography>
-            <Typography gutterBottom>
-                {`
-     3. £15.00 off when you have bought at least one footwear item and spent
-     over £75.00
-    `}
-            </Typography>
+            <Coupons
+                applicableCoupons={applicableCoupons}
+                handleAppleCoupon={handleAppleCoupon}
+                appliedCoupon={appliedCoupon}
+                />
+            <div className="coupon-applied">
+                <h5>Your order is eligible for one of the coupons</h5>
+            </div>
         </div>
         <p className="product-title">Payable Amount :
-            <CurrencyFormatter amount={getAmountAfterDiscount(amount, isCouponApplicable)}/>
+            <CurrencyFormatter amount={amount - appliedCoupon}/>
             <Typography variant="caption" gutterBottom align="left">
                 After applicable discounts
             </Typography>
@@ -49,6 +33,5 @@ const CheckoutAmount = ({amount, isCouponApplicable}) => (
         </p>
     </Paper>
 );
-
 
 export default CheckoutAmount;

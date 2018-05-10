@@ -12,3 +12,10 @@ export const removeItemFromCart = (productId) => {
         productId
     }
 }
+
+export const applyCouponOnCart = (coupon) => {
+    return {
+        type: "APPLY_COUPON",
+        coupon
+    }
+}

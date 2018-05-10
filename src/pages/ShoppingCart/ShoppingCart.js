@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {removeItemFromCart} from '../../actions/cartActions';
+import {removeItemFromCart, applyCouponOnCart} from '../../actions/cartActions';
 import HeaderComponent from '../../components/Header'
 import CheckoutList from '../../components/CheckoutList';
 import {
     selectCartProducts, 
     selectTotalAmount,
-    selectAtleastforFootwear
+    selectAtleastforFootwear,
+    selectEligibleCoupons,
+    selectAppliedCoupon
 } from '../../selectors/selectors';
 
 class ShoppingCart extends Component {
@@ -23,6 +25,11 @@ class ShoppingCart extends Component {
         this.props.removeItemFromCart(item)
     }
 
+    handleAppleCoupon = (coupon) => {
+        console.log('Coupon', coupon);
+        this.props.applyCouponOnCart(coupon);
+    }
+
     render() {
         return (
             <div>
@@ -36,6 +43,9 @@ class ShoppingCart extends Component {
                     amount={this.props.totalAmount}
                     handleDeleteFromCart={this.handleDeleteFromCart}
                     isCouponApplicable={this.props.isAtleastOneFootwareIncart}
+                    applicableCoupons={this.props.applicableCoupons}
+                    handleAppleCoupon={this.handleAppleCoupon}
+                    appliedCoupon={this.props.appliedCoupon}
                 />
                 </div>
             </div>
@@ -47,13 +57,16 @@ const mapStateToProps = (state) => {
     return {
         cartItems: selectCartProducts(state),
         totalAmount: selectTotalAmount(state),
-        isAtleastOneFootwareIncart : selectAtleastforFootwear(state)
+        isAtleastOneFootwareIncart : selectAtleastforFootwear(state),
+        applicableCoupons: selectEligibleCoupons(state),
+        appliedCoupon: selectAppliedCoupon(state)
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        removeItemFromCart: item => bindActionCreators(dispatch(removeItemFromCart(item)))
+        removeItemFromCart: item => bindActionCreators(dispatch(removeItemFromCart(item))),
+        applyCouponOnCart: coupon => bindActionCreators(dispatch(applyCouponOnCart(coupon)))
     }
 }
 

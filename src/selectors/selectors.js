@@ -38,3 +38,49 @@ export const selectAtleastforFootwear = createSelector(
         return !!cartItems.filter(item => item.subCategory === 'Footware').length
     }
 );
+
+export const isEligiblForCouponOne = createSelector(
+    [selectTotalAmount], (amount) => {
+        return (amount > 0);
+    } 
+);
+
+export const isEligiblForCouponTwo = createSelector(
+    [selectTotalAmount], (amount) => {
+        return (amount > 50);
+    } 
+);
+
+export const isEligiblForCouponThree = createSelector(
+    [selectTotalAmount, selectAtleastforFootwear],
+     (amount, hasFootware) => {
+        return (amount > 75 && hasFootware);
+    } 
+);
+
+export const selectEligibleCoupons = createSelector(
+    [
+        isEligiblForCouponOne, 
+        isEligiblForCouponTwo,
+        isEligiblForCouponThree
+    ],
+    (
+        couponFive,
+        couponTen,
+        couponTeen
+    ) => {
+       return [
+            {
+                couponOne : couponFive,
+                couponTwo : couponTen,
+                couponThree : couponTeen
+            },
+           
+        ]
+    }
+);
+
+export const selectAppliedCoupon = createSelector(
+    [getApplicationState], (state) => {
+    return state.appliedCoupon;
+});

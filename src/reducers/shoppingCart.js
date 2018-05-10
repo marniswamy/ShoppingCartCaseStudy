@@ -3,7 +3,8 @@ import remove from 'lodash/remove';
 
 export const defaultInitialState = {
     cartItems: [],
-    availableProducts: productList
+    availableProducts: productList,
+    appliedCoupon : null
 }
 
 export const shoppingCart = (state = defaultInitialState, payload) => {
@@ -23,6 +24,12 @@ export const shoppingCart = (state = defaultInitialState, payload) => {
         return {
             ...state,
             cartItems: updatedItems
+        }
+        case 'APPLY_COUPON':
+        const {coupon} = payload;
+        return {
+            ...state,
+            appliedCoupon: coupon
         }
         default:
             return state;
