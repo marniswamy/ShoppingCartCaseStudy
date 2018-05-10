@@ -44,6 +44,7 @@ class Dashboard extends Component {
                     <ProductList
                         categories={categories}
                         products={availableProducts}
+                        cartItems={cartItems}
                         selectedMenu={selectedMenu}
                         handleAddToCart={this.handleAddToCart}
                         handleSelectMenu={this.handleSelectMenu}

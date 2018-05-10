@@ -39,13 +39,24 @@ export const filterProducts = (products, menu) => {
 }
 
 export const groupCartProducts = (products) => {
-    return _.chain(products)
-    .groupBy('productId')
-    .toPairs()
-    .map(function (currentItem) {
-        return _.zipObject([
-            'productId', 'item'
-        ], currentItem);
-    })
-    .value();
+    return _
+        .chain(products)
+        .groupBy('productId')
+        .toPairs()
+        .map(function (currentItem) {
+            return _.zipObject([
+                'productId', 'item'
+            ], currentItem);
+        })
+        .value();
+}
+
+export const getRemainingStock = (allProducts, cartItems, product) => {
+    const totalStock = allProducts
+        .find(item => item.productId === product.productId)
+        .stock;
+    const cartStock = cartItems
+        .filter(item => item.productId === product.productId)
+        .length;
+    return totalStock - cartStock;
 }

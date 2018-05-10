@@ -38,6 +38,23 @@ export const shoppingCart = (state = defaultInitialState, payload) => {
                 ...state,
                 selectedMenu: menuItem
             }
+        case 'REMOVE_SINGLE_ITEM':
+            const {selectedId} = payload;
+            const filteredItems = state
+                .cartItems
+                .filter(item => item.productId === selectedId)
+                .slice(0, -1);
+            const updateItems = state
+                .cartItems
+                .filter(item => item.productId !== selectedId)
+                const finalList = [
+                ...updateItems,
+                ...filteredItems
+            ]
+            return {
+                ...state,
+                cartItems: finalList
+            }
         default:
             return state;
     }

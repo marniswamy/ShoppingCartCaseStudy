@@ -1,11 +1,19 @@
 import React, {Fragment} from 'react';
+import {random} from 'lodash';
 import Grid from 'material-ui/Grid';
 import Product from './Product';
 import Title from './Title';
 import {Paper, ListItem, List, ListItemText} from 'material-ui';
 import {formatDataBySubCategory, filterProducts} from '../utils/utils';
 
-const ProductList = ({categories, products, handleAddToCart, handleSelectMenu, selectedMenu}) => (
+const ProductList = ({
+    categories,
+    products,
+    cartItems,
+    handleAddToCart,
+    handleSelectMenu,
+    selectedMenu
+}) => (
     <div className="product-container">
         <Grid container spacing={8}>
             <Grid item xs={12} sm={2}>
@@ -21,12 +29,10 @@ const ProductList = ({categories, products, handleAddToCart, handleSelectMenu, s
                             <ListItemText primary={group}/>
                         </ListItem>
                         <List component="ul">
-                            {formatDataBySubCategory(categories).map(item => 
-                                <ListItem
-                                key={item.productId}
+                            {formatDataBySubCategory(categories).map(item => <ListItem
+                                key={random(0, 500)}
                                 onClick={() => handleSelectMenu(group, item.subCategory)}
-                                button
-                                >
+                                button>
                                 <ListItemText primary={item.subCategory}/>
                             </ListItem>)}
                         </List>
@@ -35,9 +41,14 @@ const ProductList = ({categories, products, handleAddToCart, handleSelectMenu, s
             </Grid>
             <Grid item xs={12} sm={10}>
                 <Paper>
-                  <Title selectedMenu={selectedMenu} />
+                    <Title selectedMenu={selectedMenu}/>
                     <div className="product-list">
-                        {filterProducts(products, selectedMenu).map(item => <Product key={item.productId} product={item} handleAddToCart={handleAddToCart}/>)}
+                        {filterProducts(products, selectedMenu).map(item => <Product
+                            key={item.productId}
+                            product={item}
+                            allProducts={products}
+                            cartItems={cartItems}
+                            handleAddToCart={handleAddToCart}/>)}
                     </div>
                 </Paper>
             </Grid>

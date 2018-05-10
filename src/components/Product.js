@@ -4,6 +4,7 @@ import Card, {CardActions, CardContent} from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import CurrencyFormatter from './CurrencyFormatter';
+import { getRemainingStock } from '../utils/utils';
 
 const styles = {
     title: {
@@ -14,36 +15,38 @@ const styles = {
     }
 };
 
-const ProductComponent = ({classes, product, handleAddToCart}) => (
-    <div>
-        <Card className="product-card">
-            <CardContent>
-                <Typography className={classes.title} color="primary">
-                    {product.name}
-                </Typography>
-                {(product.stock === 0)
-                    ? <Typography component="p" color="secondary">
-                            Out of stock
-                        </Typography>
-                    : <Typography component="p">
-                       Available in Stock
+const ProductComponent = ({classes, product, handleAddToCart, allProducts, cartItems}) => {
+    return (
+        <div>
+            <Card className="product-card">
+                <CardContent>
+                    <Typography className={classes.title} color="primary">
+                        {product.name}
                     </Typography>
-                }
-            </CardContent>
-            <CardActions className="card-actions">
-                <Typography component="p">
-                    Price :
-                    <CurrencyFormatter amount={product.price}/>
-                </Typography>
-                <Button
-                    variant="raised"
-                    color="primary"
-                    size="small"
-                    disabled={product.stock <= 0}
-                    onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-            </CardActions>
-        </Card>
-    </div>
-);
+                    {!getRemainingStock(allProducts, cartItems, product)
+                        ? <Typography component="p" color="secondary">
+                                Out of stock
+                            </Typography>
+                        : <Typography component="p">
+                            Available in Stock : {getRemainingStock(allProducts, cartItems, product)}
+                        </Typography>
+}
+                </CardContent>
+                <CardActions className="card-actions">
+                    <Typography component="p">
+                        Price :
+                        <CurrencyFormatter amount={product.price}/>
+                    </Typography>
+                    <Button
+                        variant="raised"
+                        color="primary"
+                        size="small"
+                        disabled={product.stock <= 0 || !getRemainingStock(allProducts, cartItems, product)}
+                        onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+                </CardActions>
+            </Card>
+        </div>
+    );
+}
 
 export default withStyles(styles)(ProductComponent);

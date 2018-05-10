@@ -125,3 +125,25 @@ a {
 .sub-category{
   font-size: 16px;
 }
+
+.product-actions {
+  position: relative;
+    right: 32px;
+}
+
+.product-actions h4 {
+  display: inline;
+  padding: 0 10px;
+  font-weight: bold;
+}
+
+.stock-label {
+  margin-right: 8%;
+  font-size: 14px;
+}
+
+.stock-label-red {
+  margin-right: 8%;
+  font-size: 14px;
+  color: red;
+}

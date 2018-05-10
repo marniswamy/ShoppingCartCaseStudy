@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {removeItemFromCart, applyCouponOnCart} from '../../actions/cartActions';
+import {
+    removeItemFromCart, 
+    applyCouponOnCart,
+    addItemToCart,
+    removeSingleItemFromCart
+    } from '../../actions/cartActions';
 import HeaderComponent from '../../components/Header'
 import CheckoutList from '../../components/CheckoutList';
 import {
@@ -9,7 +14,8 @@ import {
     selectTotalAmount,
     selectAtleastforFootwear,
     selectEligibleCoupons,
-    selectAppliedCoupon
+    selectAppliedCoupon,
+    selectAvailableProducts
 } from '../../selectors/selectors';
 
 class ShoppingCart extends Component {
@@ -29,6 +35,14 @@ class ShoppingCart extends Component {
         this.props.applyCouponOnCart(coupon);
     }
 
+    handleAddToCart = (productId) => {
+        this.props.addItemToCart(productId);
+    }
+
+    handleSingleItemDelete = (productId) => {
+        this.props.removeSingleItemFromCart(productId);
+    }
+
     render() {
         return (
             <div>
@@ -44,7 +58,10 @@ class ShoppingCart extends Component {
                     isCouponApplicable={this.props.isAtleastOneFootwareIncart}
                     applicableCoupons={this.props.applicableCoupons}
                     handleAppleCoupon={this.handleAppleCoupon}
-                    appliedCoupon={this.props.appliedCoupon}S
+                    appliedCoupon={this.props.appliedCoupon}
+                    handleAddToCart={this.handleAddToCart}
+                    allProducts={this.props.availableProducts}
+                    handleSingleItemDelete={this.handleSingleItemDelete}
                 />
                 </div>
             </div>
@@ -54,6 +71,7 @@ class ShoppingCart extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        availableProducts: selectAvailableProducts(state), 
         cartItems: selectCartProducts(state),
         totalAmount: selectTotalAmount(state),
         isAtleastOneFootwareIncart : selectAtleastforFootwear(state),
@@ -65,7 +83,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         removeItemFromCart: item => bindActionCreators(dispatch(removeItemFromCart(item))),
-        applyCouponOnCart: coupon => bindActionCreators(dispatch(applyCouponOnCart(coupon)))
+        applyCouponOnCart: coupon => bindActionCreators(dispatch(applyCouponOnCart(coupon))),
+        addItemToCart: item => bindActionCreators(dispatch(addItemToCart(item))),
+        removeSingleItemFromCart: item => bindActionCreators(dispatch(removeSingleItemFromCart(item))),
     }
 }
 
