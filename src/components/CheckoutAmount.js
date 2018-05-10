@@ -1,7 +1,8 @@
 import React from 'react';
-import {Paper, Button, Typography} from 'material-ui';
+import {Paper, Typography} from 'material-ui';
 import CurrencyFormatter from './CurrencyFormatter';
 import Coupons from './Coupons';
+import FinaliseOrder from './FinaliseOrder';
 
 const CheckoutAmount = ({amount, isCouponApplicable, applicableCoupons, handleAppleCoupon, appliedCoupon}) => (
     <Paper>
@@ -31,11 +32,9 @@ const CheckoutAmount = ({amount, isCouponApplicable, applicableCoupons, handleAp
                 After applicable discounts
             </Typography>
         </p>
-        <p className="order-button">
-            <Button variant="raised" color="primary" disabled={!amount}>
-                Place Order
-            </Button>
-        </p>
+        <div className="order-button">
+            <FinaliseOrder amount={amount} />
+        </div>
     </Paper>
 );
 
