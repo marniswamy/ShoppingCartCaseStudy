@@ -5,8 +5,7 @@ const Welcome = () => (
     <div className="welcome-page">
         <h1>Welcome to Shopping Cart!</h1>
         <h3>
-            Lets start
-            <Link to="/dashboard">here</Link>
+            Lets start <Link to="/dashboard">here</Link>
         </h3>
     </div>
 );

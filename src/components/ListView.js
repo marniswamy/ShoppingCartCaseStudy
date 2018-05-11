@@ -38,7 +38,7 @@ const ListViewComponent = ({
                         <Button
                             variant="fab"
                             mini
-                            color="secondary"
+                            color="primary"
                             onClick={() => handleAddToCart(selectedProduct)}
                             disabled={!availablestock}>
                             <AddIcon/>
@@ -47,7 +47,7 @@ const ListViewComponent = ({
                         <Button
                             variant="fab"
                             mini
-                            color="secondary"
+                            color="primary"
                             aria-label="add"
                             onClick={() => handleSingleItemDelete(selectedProduct.productId)}>
                             <RemoveIcon/>
