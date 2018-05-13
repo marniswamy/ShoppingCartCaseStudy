@@ -13,6 +13,7 @@ const CheckoutAmount = ({amount, isCouponApplicable, applicableCoupons, handleAp
         <h5 className="hint">Your order is eligible for one of the below coupons</h5>
         <div className="coupon-section">
             <Coupons
+                amount={amount}
                 applicableCoupons={applicableCoupons}
                 handleAppleCoupon={handleAppleCoupon}
                 appliedCoupon={appliedCoupon}

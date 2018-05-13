@@ -3,9 +3,9 @@ import {Button, Tooltip, Typography} from 'material-ui';
 import {availableCoupons} from '../constants/constants';
 
 /*
-TODO : Need to move buttons to map
+TODO : Need to move buttons to map method
 */
-const Coupons = ({applicableCoupons, handleAppleCoupon, appliedCoupon}) => (
+const Coupons = ({amount, applicableCoupons, handleAppleCoupon, appliedCoupon}) => (
     <div className="coupons">
         <Tooltip
             id="tooltip-top"
@@ -49,7 +49,7 @@ const Coupons = ({applicableCoupons, handleAppleCoupon, appliedCoupon}) => (
                 </Button>
             </div>
         </Tooltip>
-        {!!appliedCoupon && <Typography
+        {!!amount && !!appliedCoupon && <Typography
             variant="caption"
             className="remove-link"
             gutterBottom
