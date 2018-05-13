@@ -36,7 +36,6 @@ a {
 }
 
 .product-card {
-  width: 240px;
   height: 200px;
   margin: 8px;
   display: flex;

@@ -4,7 +4,8 @@ import Card, {CardActions, CardContent} from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import CurrencyFormatter from './CurrencyFormatter';
-import { getRemainingStock } from '../utils/utils';
+import {getRemainingStock} from '../utils/utils';
+import Grid from 'material-ui/Grid';
 
 const styles = {
     title: {
@@ -17,7 +18,7 @@ const styles = {
 
 const ProductComponent = ({classes, product, handleAddToCart, allProducts, cartItems}) => {
     return (
-        <div>
+        <Grid item xs={12} sm={4} md={3} lg={3}>
             <Card className="product-card">
                 <CardContent>
                     <Typography className={classes.title} color="primary">
@@ -45,7 +46,7 @@ const ProductComponent = ({classes, product, handleAddToCart, allProducts, cartI
                         onClick={() => handleAddToCart(product)}>Add to Cart</Button>
                 </CardActions>
             </Card>
-        </div>
+        </Grid>
     );
 }
 
