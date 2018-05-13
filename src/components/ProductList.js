@@ -42,7 +42,7 @@ const ProductList = ({
                     </Paper>
                 </Grid>
             </Hidden>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={10}>
                 <Paper>
                     <Title selectedMenu={selectedMenu}/>
                     <div className="product-list">

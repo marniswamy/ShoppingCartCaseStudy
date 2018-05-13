@@ -50,11 +50,11 @@ const HeaderComponent = ({count, classes, showMenu, handleSelectMenu, categories
                         <Link to="/checkout">Checkout</Link>
                     </Button>
                 </div>
-}
+                }
                 {!showMenu && <Button color="inherit" className="checkout-button">
-                    <Link to="/dashboard">Dashboard</Link>
+                    <Link to="/dashboard">BACK</Link>
                 </Button>
-}
+                }
             </Toolbar>
         </AppBar>
     </div>

@@ -21,7 +21,7 @@ const CheckoutAmount = ({amount, isCouponApplicable, applicableCoupons, handleAp
                 {  !!appliedCoupon && !!amount &&
             <div className="coupon-applied">
                 <h5> 
-                     <p className="wish"> Congratulation !!!</p>
+                     <p className="wish"> Congratulations !!!</p>
                     <CurrencyFormatter amount={appliedCoupon}/> OFF coupon applied on you total amount !  
                 </h5>
             </div>
