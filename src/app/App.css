@@ -18,6 +18,15 @@ a {
   padding: 8px;
 }
 
+.add-cart-button {
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+}
+
+.amount-label {
+  font-size: 12px;
+}
+
 .product-list {
   display: flex;
   flex-direction: row;

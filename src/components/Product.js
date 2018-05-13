@@ -34,11 +34,12 @@ const ProductComponent = ({classes, product, handleAddToCart, allProducts, cartI
 }
                 </CardContent>
                 <CardActions className="card-actions">
-                    <Typography component="p">
+                    <p className="amount-label">
                         Price :
                         <CurrencyFormatter amount={product.price}/>
-                    </Typography>
+                    </p>
                     <Button
+                        className="add-cart-button"
                         variant="raised"
                         color="primary"
                         size="small"
