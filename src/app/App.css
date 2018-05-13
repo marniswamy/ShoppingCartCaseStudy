@@ -148,3 +148,7 @@ a {
   font-size: 14px;
   color: red;
 }
+
+.app-bar {
+  padding-right: 8px !important;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import {withStyles} from 'material-ui/styles';
+import Hidden from 'material-ui/Hidden';
 import {
     Badge,
     AppBar,
@@ -10,6 +11,7 @@ import {
 } from 'material-ui';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import {Link} from 'react-router';
+import DrawerComponent from './Drawer'
 
 const styles = {
     root: {
@@ -21,13 +23,20 @@ const styles = {
     menuButton: {
         marginLeft: -12,
         marginRight: 20
+    },
+    appBar: {
+        padding: 0
     }
 };
 
-const HeaderComponent = ({count, classes, showMenu}) => (
+const HeaderComponent = ({count, classes, showMenu, handleSelectMenu, categories}) => (
     <div className={classes.root}>
         <AppBar position="fixed">
-            <Toolbar>
+            <Toolbar className="app-bar">
+                <Hidden only={['md', 'lg', 'xl']}>
+                    {showMenu && <DrawerComponent categories={categories} handleSelectMenu={handleSelectMenu}/>
+}
+                </Hidden>
                 <Typography variant="title" color="inherit" className={classes.flex}>
                     Shopping Cart
                 </Typography>
@@ -41,11 +50,11 @@ const HeaderComponent = ({count, classes, showMenu}) => (
                         <Link to="/checkout">Checkout</Link>
                     </Button>
                 </div>
-                }
+}
                 {!showMenu && <Button color="inherit" className="checkout-button">
                     <Link to="/dashboard">Dashboard</Link>
                 </Button>
-                }
+}
             </Toolbar>
         </AppBar>
     </div>

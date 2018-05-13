@@ -4,42 +4,42 @@ import {bindActionCreators} from 'redux';
 import {addItemToCart, selectedMenuItem} from '../../actions/cartActions';
 import HeaderComponent from '../../components/Header'
 import ProductList from '../../components/ProductList';
-import {
-    selectAvailableProducts, 
-    selectCategories, 
-    selectCartProducts,
-    selectMenuState
-} from '../../selectors/selectors';
+import {selectAvailableProducts, selectCategories, selectCartProducts, selectMenuState} from '../../selectors/selectors';
 
 class Dashboard extends Component {
-   
+
     constructor(props) {
         super(props)
         this.state = {
-            showMenu : true
+            showMenu: true
         }
     }
 
     handleAddToCart = (productId) => {
-        this.props.addItemToCart(productId);
+        this
+            .props
+            .addItemToCart(productId);
     }
 
     handleSelectMenu = (category, subCategory) => {
         const menuItem = {
-            category : category,
-            subCategory : subCategory
+            category: category,
+            subCategory: subCategory
         }
-        this.props.selectedMenuItem(menuItem);
+        this
+            .props
+            .selectedMenuItem(menuItem);
     }
 
     render() {
         const {cartItems, categories, availableProducts, selectedMenu} = this.props;
         return (
             <div>
-                <HeaderComponent 
+                <HeaderComponent
                     count={cartItems.length}
                     showMenu={this.state.showMenu}
-                />
+                    categories={categories}
+                    handleSelectMenu={this.handleSelectMenu}/>
                 <div className="body-container">
                     <ProductList
                         categories={categories}
@@ -47,8 +47,7 @@ class Dashboard extends Component {
                         cartItems={cartItems}
                         selectedMenu={selectedMenu}
                         handleAddToCart={this.handleAddToCart}
-                        handleSelectMenu={this.handleSelectMenu}
-                    />
+                        handleSelectMenu={this.handleSelectMenu}/>
                 </div>
             </div>
         )
@@ -56,12 +55,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-    return {
-        availableProducts: selectAvailableProducts(state), 
-        categories: selectCategories(state), 
-        cartItems: selectCartProducts(state),
-        selectedMenu: selectMenuState(state)
-    }
+    return {availableProducts: selectAvailableProducts(state), categories: selectCategories(state), cartItems: selectCartProducts(state), selectedMenu: selectMenuState(state)}
 };
 
 const mapDispatchToProps = (dispatch) => {
