@@ -20,7 +20,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
  3. Router 3.x used for routing.
  4. And other util libraries like loadsh and currency formatter etc.
 
-## Approach
+### Approach
 
  1. Baseline project was created using create-react-app template by facebook.
  2. Created data model object based on given products.
@@ -40,15 +40,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
  13. Below that, we have three coupons availble and displaying all three. if the order value matches the coupons conditions, then those buttons will enable, so that user can click that coupon, then the same amount will be applicable on top of the actual amount.
  14. Similary, In the header of the Cart page, we are displaying DASHBOARD button, so that user can go back and select the products again.
  15. Once user clicks the final button, one dialog box appears and confimation about the order. Once user click ok, then the page navigates to Welcome page again.  
-
-## Given test criteria.
-
-1. As a User I can add a product to my shopping cart.
-2. As a User I can remove a product from my shopping cart.
-3. As a User I can view the total price for the products in my shopping cart.
-4. As a User I can apply a voucher to my shopping cart.
-5. As a User I can view the total price for the products in my shopping cart with discounts applied.
-6. As a User I am alerted when I apply an invalid voucher to my shopping cart.
-7. As a User I am unable to Out of Stock products to the shopping cart.
-
-All the obove test criterias got addressed.
