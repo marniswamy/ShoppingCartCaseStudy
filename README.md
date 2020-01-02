@@ -4,18 +4,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `yarn` Or `npm install` 
+### `yarn` Or `npm install`
 
 The obove command will install all dependent modules
 
-### `yarn start` Or `npm start`  
+### `yarn start` Or `npm start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Technologies Used
 
- 1. React/Redux for library and data/store management. 
+ 1. React/Redux for library and data/store management.
  2. Material UI as UI framework.
  3. Router 3.x used for routing.
  4. And other util libraries like loadsh and currency formatter etc.
@@ -24,7 +24,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
  1. Baseline project was created using create-react-app template by facebook.
  2. Created data model object based on given products.
- 3. Created a store object with the default initial state including given products. 
+ 3. Created a store object with the default initial state including given products.
  4. Configured routing for page navigation, created 4 pages namely, Welcome, Dashboard, Shopping cart and   NotFound pages.
  5. Once the user starts the dev server and hits the http://localhost:3000, by default welcome page loads
  to the browser.
@@ -39,4 +39,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
  12. Then in the right side of the page, we are displaying the total amount of the cart items.
  13. Below that, we have three coupons availble and displaying all three. if the order value matches the coupons conditions, then those buttons will enable, so that user can click that coupon, then the same amount will be applicable on top of the actual amount.
  14. Similary, In the header of the Cart page, we are displaying DASHBOARD button, so that user can go back and select the products again.
- 15. Once user clicks the final button, one dialog box appears and confimation about the order. Once user click ok, then the page navigates to Welcome page again.  
+ 15. Once user clicks the final button, one dialog box appears and confimation about the order. Once user click ok, then the page navigates to Welcome page again.
